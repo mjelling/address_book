@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app='AdressBook'>
+  <head>
+    <meta charset="utf-8">
+    <title>hello world</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
+    <script src="/js/angular.min.js" charset="utf-8"></script>
+    <script src="/js/services/entriesAPI.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <script src="/js/controllers/main.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+
+  </head>
+  <body ng-controller="MainController">
+    <h1>New Entry</h1>
+      <div class="box" id="entry-input">
+        <h3>Input First Name</h3>
+        <input type="text" name="first-name" class="first-name" ng-model="firstName"><br>
+        <h3>Input Last Name</h3>
+        <input type= "text" name="last-name" class ="last-name" ng-model="lastName">
+        <h3>Input E-Mail</h3>
+        <input type= "text" name="email" class ="email" ng-model="email">
+        <h3>Input Mobile</h3>
+        <input type= "text" name="mobile-phone" class ="mobile-phone" ng-model="mobilePhone">
+        <h3>Input Work Phone</h3>
+        <input type= "text" name="work-phone" class ="work-phone" ng-model="workPhone">
+        <h3>Input Address</h3>
+        <input type= "text" name="address" class ="address" ng-model="address">
+        <h3>Input City</h3>
+        <input type= "text" name="city" class ="city" ng-model="city">
+        <h3>Input State</h3>
+        <input type= "text" name="state" class ="state" ng-model="state">
+        <h3>Input Country</h3>
+        <input type= "text" name="country" class ="country" ng-model="country">
+        <h3>Input Company</h3>
+        <input type= "text" name="company" class ="company" ng-model="company">
+        <h3>Input Website</h3>
+        <input type= "text" name="website" class ="website" ng-model="website">
+        <button ng-click="createNewEntry()">Post</button>
+        <button ng-click="buildArtistRecommendations()">Get recs</button>
+      </div>
+
+      <!-- <button ng-click='oneNewAlbum()'>New</button> -->
+  </body>
+</html>

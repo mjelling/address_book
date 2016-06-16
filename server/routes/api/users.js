@@ -1,24 +1,34 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
-var crypto = require('crypto');
+var express             = require('express'),
+    usersRouter         = express.Router(),
+    passport            = require('../../lib/passportStrategy.js'),
+    User                = require('../../models/user.js');
 
-var UserSchema = mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String },
 
-}, { timestamps: true });
+// Create a new user
+usersRouter.post('/', function(req, res, next) {
 
-UserSchema.pre('save', function(next){
-  if( this.isModified('password') ){
-    this.password = bcrypt.hashSync(this.password, 10);
-  }
-  next();
+  User.create(req.body.user, function( err, dbUser ) {
+    if (err) { res.status(500).end() }
+    res.json( dbUser );
+    // res.redirect('/login');
+  });
 });
 
-UserSchema.methods.authenticate = function(passwordTry){
-  return bcrypt.compareSync(passwordTry, this.password);
-};
+usersRouter.use(passport.authenticate('jwt', { session: false}));
 
-module.exports = mongoose.model('User', UserSchema);
+// GET all users
+usersRouter.get('/', function(req, res, next) {
+
+  User.find(function( err, dbUsers ){
+    res.json( dbUsers );
+  });
+});
+
+usersRouter.get('/:id', function(req, res, next) {
+
+  User.find(function( err, dbUsers ){
+    res.json( dbUsers );
+  });
+});
+
+module.exports = usersRouter;

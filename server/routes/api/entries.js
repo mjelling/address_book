@@ -1,7 +1,7 @@
 //entry router
 var express = require('express');
 var router = express.Router();
-var entry = require('../../models/entry.js');
+var Entry = require('../../models/entry.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

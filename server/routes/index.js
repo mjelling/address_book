@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
   res.render("index");
 });
 
-router.get('/book', function(req, res, next) {
-  res.render("book");
+router.get('/main', function(req, res, next) {
+  res.render("main");
 });
 
 
