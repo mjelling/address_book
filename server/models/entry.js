@@ -9,8 +9,10 @@ var entrySchema = mongoose.Schema({
   mobile_phone: {type: String },
   work_phone: {type: String },
   address: { type: String },
+  apt: { type: String },
   city: { type: String },
   state: { type: String },
+  zip: { type: String },
   country: { type: String },
   company: {type: String },
   website_url: {type: String }

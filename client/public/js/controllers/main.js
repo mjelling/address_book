@@ -12,6 +12,7 @@ angular
       $scope.address;
       $scope.city;
       $scope.state;
+      $scope.zip;
       $scope.country;
       $scope.company;
       $scope.website;
@@ -21,8 +22,11 @@ angular
         }
       };
 
+      $scope.inputing = false;
+
       $scope.currentUserID = Cookies.getJSON('current_user')._id;
       $scope.currentUserName = Cookies.getJSON('current_user').username;
+      $scope.formattedName = $scope.currentUserName.toUpperCase();
 
       $scope.checkDataBinding = function(){
         console.log($scope.firstName+','+$scope.lastName+','+
@@ -49,6 +53,33 @@ angular
         })
       }
 
+      $scope.removeEntry = function(entry){
+        entriesAPI.remove(entry._id).then(function(response){
+          if(response.status == 203){
+            $scope.entries = $scope.entries.filter(function(f){
+              return f._id != entry._id;
+            })
+          }
+        })
+      }
+
+
+
+      $scope.clearInputs = function(){
+        $scope.firstName = null;
+        $scope.lastName = null;
+        $scope.email = null;
+        $scope.mobilePhone = null;
+        $scope.workPhone = null;
+        $scope.address= null;
+        $scope.city = null;
+        $scope.state = null;
+        $scope.zip = null ;
+        $scope.country = null;
+        $scope.company = null;
+        $scope.website = null;
+      }
+
       $scope.createNewEntry = function(){
         var newData = $scope.newEntry.entry;
         newData.userID =$scope.currentUserID;
@@ -67,9 +98,20 @@ angular
         console.log($scope.newEntry);
         $scope.saveEntry($scope.newEntry);
         $scope.getEntriesByUser();
+        $scope.clearInputs();
+        $scope.toggleBox();
       };
 
+      $scope.toggleBox = function(){
+        if($scope.inputing){
+          $scope.inputing=false;
+        }
+        else{
+          $scope.inputing= true;
+        };
+      }
 
+      $scope.getEntriesByUser();
 
 
     }

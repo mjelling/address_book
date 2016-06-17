@@ -2,7 +2,9 @@
 <html ng-app='AdressBook'>
   <head>
     <meta charset="utf-8">
-    <title>hello world</title>
+    <title>Address Book</title>
+    <Link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/main.css" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
     <script src="/js/angular.min.js" charset="utf-8"></script>
     <script src="/js/services/entriesAPI.js" charset="utf-8"></script>
@@ -12,34 +14,59 @@
 
   </head>
   <body ng-controller="MainController">
-    <h1>New Entry</h1>
-      <div class="box" id="entry-input">
-        <h3>Input First Name</h3>
-        <input type="text" name="first-name" class="first-name" ng-model="firstName"><br>
-        <h3>Input Last Name</h3>
-        <input type= "text" name="last-name" class ="last-name" ng-model="lastName">
-        <h3>Input E-Mail</h3>
-        <input type= "text" name="email" class ="email" ng-model="email">
-        <h3>Input Mobile</h3>
-        <input type= "text" name="mobile-phone" class ="mobile-phone" ng-model="mobilePhone">
-        <h3>Input Work Phone</h3>
-        <input type= "text" name="work-phone" class ="work-phone" ng-model="workPhone">
-        <h3>Input Address</h3>
-        <input type= "text" name="address" class ="address" ng-model="address">
-        <h3>Input City</h3>
-        <input type= "text" name="city" class ="city" ng-model="city">
-        <h3>Input State</h3>
-        <input type= "text" name="state" class ="state" ng-model="state">
-        <h3>Input Country</h3>
-        <input type= "text" name="country" class ="country" ng-model="country">
-        <h3>Input Company</h3>
-        <input type= "text" name="company" class ="company" ng-model="company">
-        <h3>Input Website</h3>
-        <input type= "text" name="website" class ="website" ng-model="website">
-        <button ng-click="createNewEntry()">Post</button>
-        <button ng-click="buildArtistRecommendations()">Get recs</button>
+    <header class="header">
+      <div>
+        <h1> HI {{ formattedName }}, WELCOME TO AN OLD FASHIONED ADDRESS BOOK!<h2>
+        <button ng-click="toggleBox()">Create A New Entry</button>
       </div>
+    </header>
 
+    <div class="case">
+        <div class="case-input" ng-show="inputing">
+        <ul class="Entry">
+          <div class="input-box" id="entry-input">
+            <!-- <h3>Input A New Entry:</h3> -->
+            <li class='hanging-button'><input type="text" name="first-name" class="first-name" placeholder="First Name" style="width: 10em; height: 2.5em;" ng-model="firstName">
+            <input type= "text" name="last-name" class ="last-name" placeholder="Last Name" style="width: 10em; height: 2.5em;" ng-model="lastName"></li>
+            <li class='hanging-button'><input type= "text" name="email" class ="email" placeholder="Email" style="width: 14em; height: 2.5em;" ng-model="email">
+            <input type= "text" name="mobile-phone" class ="mobile-phone" placeholder="Mobile Phone" style="width: 10em; height: 2.5em;"ng-model="mobilePhone">
+            <input type= "text" name="work-phone" class ="work-phone" placeholder="Work Phone" style="width: 10em; height: 2.5em;" ng-model="workPhone"></li>
+            <li class='hanging-button'><input type= "text" name="address" class ="address" placeholder="Street Address" style="width: 14em; height: 2.5em;" ng-model="address">
+            <input type= "text" name="city" class ="city" placeholder="City" style="width: 10em; height: 2.5em;" ng-model="city"></li>
+            <li class='hanging-button'><input type= "text" name="state" class ="state" placeholder="State" style="width: 10em; height: 2.5em;" ng-model="state">
+            <input type= "text" name="zip" class ="zip" placeholder="Zip" style="width: 10em; height: 2.5em;" ng-model="zip">
+            <input type= "text" name="country" class ="country" placeholder="Country" style="width: 10em; height: 2.5em;" ng-model="country"></li>
+            <li class='hanging-button'><input type= "text" name="company" class ="company" placeholder="Company" style="width: 12em; height: 2.5em;" ng-model="company">
+            <input type= "text" name="website" class ="website" placeholder="Web Site" style="width: 14em; height: 2.5em;" ng-model="website"></li>
+            <button ng-click="createNewEntry()">Create</button>
+            <button ng-click="toggleBox()">Hide</button>
+          </div>
+        </ul>
+      </div>
+        <div class="row">
+          <span class="entries" ng-repeat="entry in entries | orderBy: 'last_name'">
+            <article class="entry">
+              <div class="six columns">
+                <div class="case">
+                  <ul>
+                    <h4> {{ entry.first_name }} {{ entry.last_name }}</h4>
+                    <li> Email: <span class='fill' id='email'>{{ entry.email }}</span></li>
+                    <li> Mobile Phone: <span class='fill' id='mobile-phone'>{{ entry.mobile_phone}}</span></li>
+                    <li> Work Phone: <span class='fill' id='work-phone'>{{entry.work_phone }}</span></li>
+                    <li class='address'> Address: <span class='fill' id='address'>{{ entry.address }}</span></li>
+                    <li class='hanging'><span class='fill' id='city'>{{ entry.city }}, {{ entry.state }} {{ entry.zip }} </span></li>
+                    <li class= 'bottom-hang'> <span class='fill' id='country'>{{ entry.country }}</span></li>
+                    <li> Company: <span class='fill' id='company'>{{ entry.company }}</span></li>
+                    <li> Website: <span class='fill' id='website'><a ng-href="{{ entry.website_url }}"}>{{ entry.website_url }}</a></span></li>
+                  </span>
+                  <button type="button" name="button" ng-click="removeEntry(entry)">Remove</button>
+                </div>
+              </div>
+          </article>
+          </span>
+        </div>
+      </ul>
+    </div>
       <!-- <button ng-click='oneNewAlbum()'>New</button> -->
   </body>
 </html>

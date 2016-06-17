@@ -1,0 +1,103 @@
+body {
+  background-color: lightblue;
+  width: 90%
+  margin-top: 2em;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left: 5%;
+  padding right: 5%;
+}
+h1{
+  margin-top: .5em;
+  margin-bottom: .1em;
+}
+.container {
+}
+
+.case {
+  width: 80%;
+  border: 20px solid black;
+  padding-top: 7%;
+  padding-right: 10%;
+  padding-left: 10%;
+  border-right: 5%;
+  padding-bottom: 2%;
+  margin-bottom: 20px;
+
+  float: left;
+  background-color: lightpink;
+}
+.case-input {
+  width: 76%;
+  border: 20px solid black;
+  padding-top: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-bottom: 2%;
+  margin-bottom: 20px;
+
+  float: left;
+  background-color: lightpink;
+}
+
+input{
+  height: .5em;
+  length: .5em;
+}
+
+ul{
+    list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+.address{
+  margin-bottom: 0;
+  padding-bottom: 0em;
+}
+.hanging{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 7.6em;
+}
+.hanging-button{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.bottom-hang{
+  margin-left: 7.6em;
+}
+
+.fill{
+  padding-left: .2em;
+  padding-right: .2em;
+  border-bottom: 2px solid black;
+}
+
+#name {
+  margin-left: 4.8em;
+}
+#email{
+  margin-left:4.8em;
+}
+#mobile-phone{
+  margin-left: 1em;
+}
+#work-phone{
+  margin-left: 1.71em;
+}
+#address{
+  margin-left:  3.4em;
+}
+#company{
+  margin-left: 2.7em;
+}
+#website{
+  margin-left: 3.42em;
+  margin-bottom: 1em;
+}
